@@ -19,6 +19,7 @@ exports.createCategory = async (req, res) => {
 exports.getAllCategories = async (req, res) => {
   try {
     const categories = await Category.find();
+    console.log('Found categories:', categories);
     res.status(200).json({ success: true, categories });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -29,6 +30,7 @@ exports.getAllCategories = async (req, res) => {
 exports.getCategoryById = async (req, res) => {
   try {
     const category = await Category.findById(req.params.id);
+    console.log('Found category by ID:', category);
     if (!category) return res.status(404).json({ success: false, message: "Category not found" });
     res.status(200).json({ success: true, category });
   } catch (err) {
