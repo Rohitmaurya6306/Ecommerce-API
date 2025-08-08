@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors'); // <-- Add this line
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes')
 // const productController = require('./controller/productController');
@@ -8,6 +9,7 @@ const path = require('path');
 const app = express();
 
 // Middleware
+app.use(cors()); // <-- Add this line
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
